@@ -42,7 +42,7 @@ CC_SRC_LANGUAGE=golang
 # Chaincode version
 VERSION=1
 # Chaincode name
-CHAINCODE_NAME='test-chaincode'
+CHAINCODE_NAME='users'
 # CHAINCODE_NAME='users'
 
 # default image tag
