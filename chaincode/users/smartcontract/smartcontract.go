@@ -12,9 +12,10 @@ type SmartContract struct {
 }
 
 type File struct {
-	ID   string `json:"id"`
-	Hash string `json:"hash"`
-	Time string `json:"time"`
+	ID        string `json:"id"`
+	FILE_NAME string `json:"file_name"`
+	Hash      string `json:"hash"`
+	Time      string `json:"time"`
 }
 
 func (s *SmartContract) InitLedger(ctx contractapi.TransactionContextInterface) error {
@@ -29,7 +30,7 @@ func (s *SmartContract) FileExists(ctx contractapi.TransactionContextInterface, 
 	return assetJSON != nil, nil
 }
 
-func (s *SmartContract) CreateFile(ctx contractapi.TransactionContextInterface, id string, hash string, time string) error {
+func (s *SmartContract) CreateFile(ctx contractapi.TransactionContextInterface, id string, file_name string, hash string, time string) error {
 	exists, err := s.FileExists(ctx, id)
 	if err != nil {
 		return err
@@ -40,6 +41,7 @@ func (s *SmartContract) CreateFile(ctx contractapi.TransactionContextInterface, 
 
 	file := File{
 		ID:   id,
+    FILE_NAME: file_name,
 		Hash: hash,
 		Time: time,
 	}
@@ -92,4 +94,3 @@ func (s *SmartContract) GetAllFiles(ctx contractapi.TransactionContextInterface)
 
 	return files, nil
 }
-
